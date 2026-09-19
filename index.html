@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script>
+  (function proteger() {
+    // 🔑 Escribe aquí la contraseña que le darás a tus alumnos:
+    const MI_CONTRASEÑA = "ELE2026"; 
+
+    // Comprueba si ya puso la clave en esta sesión
+    if (sessionStorage.getItem("acceso") !== "permitido") {
+      let intento = prompt("🔒 ACTIVIDAD PROTEGIDA\nPor favor, ingresa la contraseña de tu clase:");
+
+      if (intento === MI_CONTRASEÑA) {
+        sessionStorage.setItem("acceso", "permitido");
+      } else {
+        alert("❌ Contraseña incorrecta. Pide la clave a tu profesor.");
+        document.write("<h2 style='text-align:center; margin-top:50px; font-family:sans-serif;'>Acceso restringido 🔒</h2>");
+        window.stop(); // Detiene la carga de la página
+      }
+    }
+  })();
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plataforma de Conjugación: Un viaje por Bolivia</title>
